@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orangebox-clone</title>
+</head>
+
+<style>
+  body {
+    background-color: #ccc;
+    margin: 0;
+    padding: 0 25px;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    font-family: arial, sans-serif;
+    justify-content: space-around;
+    align-items: baseline;
+    background-color: white;
+    padding: 25px 0;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  :root {
+    --color: darkorange;
+  }
+
+  .orangebox {
+    color: var(--color);
+    text-transform: capitalize;
+    font-size: clamp(2rem, 1.5vw, 3rem);
+  }
+
+  .ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .list a {
+    color: #999;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 10px;
+    transition: color .5s ease;
+  }
+
+  .list a:hover:not(.second) {
+    color: darkorange;
+    transition: color .5s ease;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+
+  .one {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .two {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .two .second {
+    position: relative;
+  }
+
+  .tooltiptext {
+    display: flex;
+    left: -155px;
+    right: -100px;
+    bottom: -250px;
+    flex-direction: column;
+    position: absolute;
+    padding: 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.9);
+    visibility: hidden;
+    transition: .2s ease;
+    opacity: 0;
+  }
+
+  .tooltiptext::after {
+    position: absolute;
+    content: '';
+    left: 55%;
+    bottom: 100%;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+  }
+
+  .two .second:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transition: .2s ease;
+  }
+
+  .uk,
+  .fr,
+  .de,
+  .es {
+    padding: 10px 0px;
+  }
+
+  .center p {
+    color: var(--color);
+    font-size: 1.5rem;
+  }
+
+  .center h3 {
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 5.5rem);
+    font-family: 'Courier New', Courier, monospace, sans-serif !important;
+  }
+
+  /*Media Query*/
+  @media screen and (max-width:1180px) {
+
+    header {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+    }
+
+    .list {
+      border-bottom: 1px solid #ccc;
+      display: block;
+      width: 100%;
+    }
+
+    .nav {
+      flex-direction: column;
+      display: flex;
+    }
+
+    .one,
+    .two {
+      flex-direction: column;
+      display: flex;
+    }
+  }
+
+  /*End*/
+
+  /* Image pre-define width & height*/
+  img {
+    width: 100%;
+  }
+
+  /*End*/
+
+  .overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 1;
+  }
+
+  .img {
+    position: relative;
+    z-index: -1;
+  }
+
+  .img img,
+  .img-two img {
+    object-fit: cover;
+  }
+
+  .overlaytext{
+    position: absolute;
+    color: white;
+    font-size: 5vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+  }
+
+  .overlaytext a {
+    color: white !important;
+    font-size: 1.5rem;
+  }
+
+  /*////*/
+  .img-two {
+    position: relative;
+    z-index: -1;
+  }
+
+  .overlay-two {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+  }
+
+  .overlaytext-two {
+    position: absolute;
+    color: white;
+    font-size: 5vw;
+    display: grid;
+    margin: 3.5rem;
+  }
+
+  .overlaytext-two a {
+    color: white;
+    font-size: large;
+    margin-top: 5rem;
+  }
+
+  /*bla*/
+  .items {
+    width: 33.3%;
+    cursor: pointer;
+  }
+
+  .items-text p {
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .items-text a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .items-text:hover a {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .items img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .container {
+    background-color: white;
+    display: flex;
+    flex: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .items {
+    flex: 25%;
+    margin: 25px;
+  }
+
+  /*End*/
+
+  /*media query II*/
+  @media screen and (max-width:780px) {
+    .items {
+      flex: 45%;
+    }
+  }
+
+  /*End*/
+
+  .center {
+    background-color: whit;
+    margin: 0;
+    font-family: arial, sans-serif;
+  }
+
+  .items-two {
+    display: flex;
+    margin: 3.5rem;
+    height: 600px;
+  }
+
+  .items-two > img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .items-text-two a,
+  p,
+  img {
+    object-fit: cover;
+    color: black;
+    font-size: 2rem;
+    text-decoration: none;
+  }
+
+  .items-text-two p{
+    color: darkorange;
+  }
+
+  .items-text-two img {
+    height: 500px;
+  }
+
+  @media screen and(max-width:500px) {
+
+    .items-two-container {
+      display: flex;
+      flex-direction: row;
+      overflow: auto;
+      width: 33.3%;
+    }
+  }
+
+  /*footer*/
+  #footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: .5rem 2rem;
+    border-top: 1px solid grey;
+    margin-top: 5rem;
+  }
+
+  .footer-link {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+
+  .footer-link a {
+    text-decoration: none;
+    color: grey;
+  }
+
+
+  /*footer end*/
+</style>
+
+<body>
+  <header>
+    <div class="orangebox">orangebox</div>
+    <nav class="nav">
+      <ul class="ul one">
+        <li class="first list"><a href="">Product</a></li>
+        <li class="second list"><a href="">Case Studies</a></li>
+        <li class="third list"><a href="">Materials Library</a></li>
+        <li class="fourth list"><a href="">Sustainability</a></li>
+        <li class="fourth list"><a href="">Knowledge</a></li>
+        <li class="fourth list"><a href="">About</a></li>
+      </ul>
+
+      <ul class="ul two">
+        <li class="first list"><a href="">Contact</a></li>
+        <li class="second list"><a href="">Uk
+            <div class="tooltiptext">
+              <p class="pr">Selection Region / Language</p>
+              <span class="uk">UK-Engilsh</span>
+              <span class="fr">UK-Engilsh</span>
+              <span class="de">UK-Engilsh</span>
+              <span class="es">UK-Engilsh</span>
+            </div>
+          </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="img">
+      <img src="/orangebox-image/Recur.jpg" alt="Mountains" width="100%" height="800px">
+      <div class="overlay">
+        <div class="overlaytext">
+          <p>Campers & Dens Pod system</p>
+          <a href="#">View collection</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="center">
+      <p>OrangeBox</p>
+
+      <h3>Designing for the people-entered workspalce</h3>
+    </div>
+
+    <div class="container">
+      <div class="items">
+        <img src="/orangebox-image/ons.jpg" alt="Mountains" height="300px">
+        <div class="items-text">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+      <div class="items">
+        <img src="/orangebox-image/cstudy.jpg" alt="Mountains" height="300px">
+        <div class="items-text">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+      <div class="items">
+        <img src="/orangebox-image/img_5terre_wide.jpg" alt="Mountains" height="300px">
+        <div class="items-text">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+      <div class="items">
+        <img src="/orangebox-image/interior 1.jpg" alt="Mountains" height="300px">
+        <div class="items-text">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+      <div class="items">
+        <img src="/orangebox-image/interior 2.jpg" alt="Mountains" height="300px">
+        <div class="items-text">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+      <div class="items">
+        <img src="/orangebox-image/interior 3.jpg" alt="Mountains" height="300px">
+        <div class="items-text">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="img-two">
+      <img src="/orangebox-image/Recur.jpg" alt="Mountains" width="100%" height="800px">
+      <div class="overlay-two">
+        <div class="overlaytext-two">
+          Beyond The Desk a modular seating system with fixed, ergonomic worktables
+
+          <a href="#">View collection</a>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="items-two-container">
+      <div class="items-two">
+        <div class="items-text-two">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+        <img src="/orangebox-image/ua92.jpg" alt="Mountains" height="300px">
+      </div>
+
+      <div class="items-two">
+        <img src="/orangebox-image/ons.jpg" alt="Mountains" height="300px">
+        <div class="items-text-two">
+          <a href="#">Interior architecture and pods</a>
+          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        </div>
+      </div>
+
+      <div class="items-two">
+        <div class="items-text-two">
+          <a href="#">Interior architecture and pods</a>
+          <p>We helped shape the re-imagined HQ for one of the UK’s premier financial providers, in their native nation’s capital, Cardiff.</p>
+        </div>
+        <img src="/orangebox-image/cstudy.jpg" alt="Mountains" height="300px">
+      </div>
+    </div> 
+
+  </main>
+
+
+
+  <footer>
+
+    <div id="footer">
+      <ul class="footer-link">
+        <li class="pay-gap"><a href="#">Gender Pay Gap</a></li>
+
+        <ul>
+          <li class="policies"><a href="#">Policies</a></li>
+          <span class="callout-polic"></span>
+        </ul>
+
+      </ul>
+
+      <ul class="footer-link">
+        <li class="job"><a href="#">Gender Pay Gap</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>
