@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orangebox-clone</title>
+  <link rel="icon" type="image/x-icon" href="orangebox-image/favicon.ico">
 </head>
 
 <style>
@@ -27,7 +28,7 @@
   }
 
   :root {
-    --color: darkorange;
+    --color: #ff7900;
   }
 
   .orangebox {
@@ -74,7 +75,7 @@
 
   .two .second {
     position: relative;
-  } 
+  }
 
   .tooltiptext {
     display: flex;
@@ -135,6 +136,10 @@
       align-items: center;
     }
 
+    body {
+      padding: 0;
+    }
+
     .list {
       border-bottom: 1px solid #ccc;
       display: block;
@@ -181,7 +186,7 @@
     object-fit: cover;
   }
 
-  .overlaytext{
+  .overlaytext {
     position: absolute;
     color: white;
     font-size: 5vw;
@@ -192,9 +197,9 @@
     text-align: center;
   }
 
-  .overlaytext p{
-   font-size: 5vw;
-   color: white;
+  .overlaytext p {
+    font-size: 5vw;
+    color: white;
   }
 
   .overlaytext a {
@@ -276,6 +281,10 @@
     .items {
       flex: 45%;
     }
+
+    body {
+      padding: 0;
+    }
   }
 
   /*End*/
@@ -286,43 +295,39 @@
     font-family: arial, sans-serif;
   }
 
-  .items-two {
+  /*case study*/
+  .case-study {
+    margin: 10px;
+    max-width: max-content;
     display: flex;
-    margin: 3.5rem;
-    height: 600px;
   }
 
-  .items-two > img{
-    width: 100%;
-    height: 100%;
+  .case-study-image {
+    width: 60%;
   }
 
-  .items-text-two a,
-  p,
-  img {
-    object-fit: cover;
-    color: black;
-    font-size: 2rem;
-    text-decoration: none;
+  .case-study-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 40%;
+    margin-left: 20px;
+    padding: 25px;
   }
 
-  .items-text-two p{
-    color: darkorange;
+  .case-study-text h3 {
+    color: #ff7900;
+    font-size: 2.5rem;
   }
 
-  .items-text-two img {
-    height: 500px;
+  .case-study-text h2 {
+    font-size: 3.5rem;
   }
 
-  @media screen and(max-width:500px) {
-
-    .items-two-container {
-      display: flex;
-      flex-direction: row;
-      overflow: auto;
-      width: 33.3%;
-    }
+  .case-study-text p {
+    font-size: 1.5rem;
+    font-weight: normal;
   }
+
+  /*End*/
 
   /*footer*/
   #footer {
@@ -345,6 +350,54 @@
     color: grey;
   }
 
+  ul {
+    list-style-type: none;
+  }
+
+  .footer-polic {
+    position: relative;
+
+    min-width: 300px;
+  }
+
+  .footer-polic:hover .callout-polic {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    top: -445px;
+    background-color: #f1f1f1;
+    opacity: 1;
+    transition: .9s ease;
+  }
+
+  .callout-polic::after {
+    content: '';
+    border-width: 20px;
+    border-style: solid;
+    border-color: #f1f1f1 transparent transparent transparent;
+    top: 100%;
+    left: 25%;
+    position: absolute;
+  }
+
+  .callout-polic {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    top: -445px;
+    background-color: #f1f1f1;
+    display: none;
+    opacity: 0;
+    transition: .9s ease;
+  }
+
+  .callout-polic a {
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
   /*footer end*/
 </style>
@@ -354,7 +407,7 @@
     <div class="orangebox">orangebox</div>
     <nav class="nav">
       <ul class="ul one">
-        <li class="first list"><a href="">Product</a></li>
+        <li class="first list"><a target="_parent" href="pen.html">Product</a></li>
         <li class="second list"><a href="">Case Studies</a></li>
         <li class="third list"><a href="">Materials Library</a></li>
         <li class="fourth list"><a href="">Sustainability</a></li>
@@ -457,56 +510,81 @@
       </div>
     </div>
 
-    
 
-    <div class="items-two-container">
-      <div class="items-two">
-        <div class="items-text-two">
-          <a href="#">Interior architecture and pods</a>
-          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+    <!--Case study-->
+    <div class="case-study-container">
+      <div class="case-study">
+        <div class="case-study-image">
+          <img src="/orangebox-image/Recur.jpg" alt="">
         </div>
-        <img src="/orangebox-image/ua92.jpg" alt="Mountains" height="300px">
-      </div>
-
-      <div class="items-two">
-        <img src="/orangebox-image/ons.jpg" alt="Mountains" height="300px">
-        <div class="items-text-two">
-          <a href="#">Interior architecture and pods</a>
-          <p>Acoustic pods and breakaway spaces for different layers of privacy.</p>
+        <div class="case-study-text">
+          <h3>Case study</h3>
+          <h2>Office for National Statistics (ONS)</h2>
+          <p>
+            ONS's vision for their workspace projects was to create great workspaces that enable and inspire all at the
+            business to be at their best.
+          </p>
         </div>
       </div>
 
-      <div class="items-two">
-        <div class="items-text-two">
-          <a href="#">Interior architecture and pods</a>
-          <p>We helped shape the re-imagined HQ for one of the UK’s premier financial providers, in their native nation’s capital, Cardiff.</p>
+      <div class="case-study">
+        <div class="case-study-image">
+          <img src="/orangebox-image/Recur.jpg" alt="">
         </div>
-        <img src="/orangebox-image/cstudy.jpg" alt="Mountains" height="300px">
+        <div class="case-study-text">
+          <h3>Case study</h3>
+          <h2>UA92</h2>
+          <p>
+            Designed as a game-changing higher education experience and located at a new campus in Old Trafford, Manchester, it's purpose is to better prepare students for life and work in business, media & sport.
+          </p>
+        </div>
       </div>
-    </div> 
 
-  </main>
+      <div class="case-study">
+        <div class="case-study-image">
+          <img src="/orangebox-image/Recur.jpg" alt="">
+        </div>
+        <div class="case-study-text">
+          <h3>Case study</h3>
+          <h2>Principality Building Society</h2>
+          <p>
+            We helped shape the re-imagined HQ for one of the UK's premier financial providers, in their native nation's capital, Cardiff.
+          </p>
+        </div>
+      </div>
+    </div>
 
 
 
-  <footer>
+    <footer>
 
-    <div id="footer">
-      <ul class="footer-link">
-        <li class="pay-gap"><a href="#">Gender Pay Gap</a></li>
+      <div id="footer">
+        <ul class="footer-link">
+          <li class="pay-gap"><a href="#">Gender Pay Gap</a></li>
 
-        <ul>
-          <li class="policies"><a href="#">Policies</a></li>
-          <span class="callout-polic"></span>
+          <ul class="footer-polic">
+            <li class="policies"><a href="#">Policies</a></li>
+            <span class="callout-polic">
+              <a href="">Cookie Policy</a>
+              <a href="">Terms of Use</a>
+              <a href="">Disclaimer</a>
+              <a href="">Modern Slavery </a>
+              <a href="">Privacy Policy</a>
+              <a href="">Sustainable Design Policy</a>
+              <a href="">Green-Claims Policy</a>
+              <a href="">Environmental Policy</a>
+              <a href="">Sustainability Policy</a>
+            </span>
+          </ul>
+
         </ul>
 
-      </ul>
+        <ul class="footer-link">
+          <li class="job"><a href="#">Jobs at OrangeBox</a></li>
+        </ul>
+      </div>
+    </footer>
 
-      <ul class="footer-link">
-        <li class="job"><a href="#">Gender Pay Gap</a></li>
-      </ul>
-    </div>
-  </footer>
 </body>
 
 </html>
